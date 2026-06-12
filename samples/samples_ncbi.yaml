@@ -1,0 +1,63 @@
+# WGBS_tools 样本清单 — NCBI 公共数据 (野生型 + 全部突变体)
+samples:
+  # ===== 野生型 (9 samples, single-end) =====
+  - name: SRR1566116
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/wildtype/SRR1566116_1.fastq.gz
+  - name: SRR3106959
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/wildtype/SRR3106959_1.fastq.gz
+  - name: SRR3106960
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/wildtype/SRR3106960_1.fastq.gz
+  - name: SRR3476867
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/wildtype/SRR3476867_1.fastq.gz
+  - name: DRR001162
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/wildtype/DRR001162_1.fastq.gz
+  - name: DRR001163
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/wildtype/DRR001163_1.fastq.gz
+  - name: DRR001164
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/wildtype/DRR001164_1.fastq.gz
+  - name: DRR001165
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/wildtype/DRR001165_1.fastq.gz
+  - name: DRR001166
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/wildtype/DRR001166_1.fastq.gz
+
+  # ===== 突变体 (单端 12 samples) =====
+  - name: SRR1566117
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/SRR1566117_1.fastq.gz
+  - name: SRR1566118
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/SRR1566118_1.fastq.gz
+  - name: SRR3476868
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/SRR3476868_1.fastq.gz
+  - name: SRR3476869
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/SRR3476869_1.fastq.gz
+  - name: SRR3476870
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/SRR3476870_1.fastq.gz
+  - name: SRR3476871
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/SRR3476871_1.fastq.gz
+  - name: SRR5559311
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/SRR5559311_1.fastq.gz
+  - name: SRR9700104
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/SRR9700104_1.fastq.gz
+  - name: SRR10078914
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/SRR10078914_1.fastq.gz
+  - name: SRR10078915
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/SRR10078915_1.fastq.gz
+  - name: SRR10078916
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/SRR10078916_1.fastq.gz
+  - name: SRR3106957
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/SRR3106957_1.fastq.gz
+  - name: SRR3106958
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/SRR3106958_1.fastq.gz
+
+  # ===== 突变体 (双端 4 samples) =====
+  - name: SRR17446762
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/SRR17446762_1.fastq.gz
+    read2: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/SRR17446762_2.fastq.gz
+  - name: SRR17446761
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/SRR17446761_1.fastq.gz
+    read2: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/SRR17446761_2.fastq.gz
+  - name: SRR17446759
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/SRR17446759_1.fastq.gz
+    read2: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/SRR17446759_2.fastq.gz
+  - name: SRR27455374
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/SRR27455374_1.fastq.gz
+    read2: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata_NCBI/SRR27455374_2.fastq.gz

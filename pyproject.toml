@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=64.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wgbs_tools"
+version = "0.2.0"
+description = "WGBS analysis pipeline for DNA methylation calling and summary"
+requires-python = ">=3.10"
+dependencies = [
+    "scipy>=1.9.0",
+    "pandas>=1.5.0",
+    "numpy>=1.23.0",
+]
+
+[project.scripts]
+wgbs-tools = "wgbs_tools.__main__:main"
+
+[tool.setuptools]
+packages = ["wgbs_tools", "wgbs_tools.modules", "wgbs_tools.utils"]

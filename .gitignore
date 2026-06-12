@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Logs
+*.log
+
+# Temp files
+*.temp.*
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+
+# NFS
+.nfs*

@@ -1,0 +1,16 @@
+# WGBS_tools 样本清单 — 用户自有 NC2M 数据 (验证复刻)
+samples:
+  - name: NC2M_1
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata/NC2M_1_clean_1.fq.gz
+    read2: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata/NC2M_1_clean_2.fq.gz
+    skip_trimming: true  # _clean 文件跳过修剪
+
+  - name: NC2M_2
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata/NC2M_2_clean_1.fq.gz
+    read2: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata/NC2M_2_clean_2.fq.gz
+    skip_trimming: true
+
+  - name: NC2M_3
+    read1: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata/NC2M_3_clean_1.fq.gz
+    read2: /data/home/zhength/work/2026.6.11_CaMethy_suppleFig/rawdata/NC2M_3_clean_2.fq.gz
+    skip_trimming: true
