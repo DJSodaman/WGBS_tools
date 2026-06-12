@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "wgbs_tools"
-version = "0.2.0"
-description = "WGBS analysis pipeline for DNA methylation calling and summary"
+version = "0.2.2"
+description = "WGBS analysis pipeline for DNA methylation calling and summary — validated on Neurospora crassa"
 requires-python = ">=3.10"
 dependencies = [
     "scipy>=1.9.0",
