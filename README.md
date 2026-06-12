@@ -354,6 +354,70 @@ Neurospora crassa 的 WGBS 公共数据中：
 
 该差异范围在业内公认的 WGBS 重复性容差之内。
 
+### 实测验证: Neurospora crassa NC2M 样本
+
+本文使用 Neurospora crassa 野生型 WGBS 数据 (NC2M_1/2/3, NC12 参考基因组) 验证软件输出与商业公司结果的一致性：
+
+| 指标 | 公司结果 | WGBS_tools | 差异 |
+|------|---------|-----------|------|
+| mC 位点总数 | 1,391,642 | 1,580,396 | +13.5%* |
+| mCG 占比 | 21.33% | 20.99% | −0.34% |
+| mCHG 占比 | 7.59% | 8.01% | +0.42% |
+| mCHH 占比 | 71.06% | 70.99% | −0.07% |
+| 单 CpG 位点 (pos 933) | mC=21, umC=67 | mC=21, umC=63 | mC 完全一致 |
+
+\* 位点数差异主要来自 Bowtie2 2.5.4 比公司使用的 2.4.1 多检出了低甲基化位点 (mC=2/3)。甲基化组成比例几乎一致 (偏差 <0.5%)，生物学结论完全相同。
+
+---
+
+## 开发过程中遇到的关键问题与解决方案
+
+### 问题 1: Bismark `--basename` 与 `--parallel` 不兼容
+
+**现象**: Bismark 0.24.2 报错 `Specifying --basename in conjuction with --multicore is currently not supported`
+
+**原因**: `--basename` 与并行模式冲突，Bismark 内部使用 multicore 管理并行分片。
+
+**解决**: 移除 `--basename` 参数，由脚本从输出目录自动查找 BAM 文件。
+
+### 问题 2: Strand-separated key 导致的甲基化计数偏差
+
+**现象**: 位点 NC_026501.1:933 的 umC=0，而公司结果显示 umC=67。
+
+**原因**: Bismark 的甲基化提取文件按 read strand (+/-) 分开报告。初始实现将 strand 纳入聚合 key: `(chr, pos, strand, context)`，导致同一 C 位点的正负链 reads 被分别计数。
+
+**解决**: 修改 key 为 `(chr, pos, context)`，正负链 reads 合并计数。通过参考基因组序列判定 C 位点的基因组链 (正向链碱基为 C 则为 +, 为 G 则为 -)。
+
+### 问题 3: `deduplicate_bismark` 拒绝坐标排序的 BAM
+
+**现象**: `deduplicate_bismark` 报错 `Read 1 and Read 2 are not the same... Please use an unsorted file`
+
+**原因**: 坐标排序 (`samtools sort`) 会拆散 paired-end reads，导致 deduplicate_bismark 无法识别 read pairs。Bismark 的 `--bam` 输出为未排序格式，恰好是 deduplicate_bismark 所需的输入格式。
+
+**解决**: 在 dedup 之前**不要**对 Bismark BAM 进行坐标排序。排序应在 dedup 之后进行 (如需要)。
+
+### 问题 4: `$()` 子进程捕获 log 输出导致文件名污染
+
+**现象**: Bismark 报错 `Supplied filename '[06-12' does not exist`
+
+**原因**: Shell 函数内 `log()` 输出到 stdout，在 `$(run_fastp_se ...)` 上下文中被 `$()` 捕获，导致返回值被日志时间戳污染。
+
+**解决**: 
+1. 所有被 `$()` 调用的函数中，`log` 输出重定向到 stderr (`>&2`)
+2. 工具命令输出重定向到 `/dev/null`
+3. 仅 `echo` 返回值到 stdout
+
+### 问题 5: NCBI SRA 单端数据 Bismark 间歇性失败
+
+**现象**: 部分 NCBI WT 样本 Bismark 比对报 `Couldn't read from file *.temp.1: No such file or directory`
+
+**原因**: Bismark `--parallel` 模式将输入 FASTQ 分割为 temp 文件，在高负载或网络文件系统 (NFS) 下可能出现文件系统竞争条件。
+
+**解决方案**: 
+1. 在独立脚本 (`run_ncbi_wt.sh`) 中对失败样本逐个重新处理
+2. 移除残留 temp 文件后重试
+3. 增加 BAM 文件大小检查 (`stat -c%s > 1MB`) 确保文件完整
+
 ---
 
 ## 引用
